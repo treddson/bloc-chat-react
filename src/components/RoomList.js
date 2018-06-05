@@ -27,6 +27,11 @@ class RoomList extends Component {
             <li key={ room.key }> { room.name }</li>
         )}
         </ul>
+        <form className="create-rooms">
+            <input type="text">
+
+            </input>
+        </form>
       </div>
     );
   }
