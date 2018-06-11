@@ -5,16 +5,30 @@ class MessageList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            messages: [],
+            username: '',
+            newMessage: '',
+            value: '',
+            activeRoom: ''
         }
-        this.roomsRef = this.props.firebase.database().ref('rooms');
+        this.messagesRef = this.props.firebase.database().ref('messages');
     }
 
     componentDidMount() {
-        this.roomsRef.on('child_added', snapshot => {
-            const room = snapshot.val();
-            room.key = snapshot.key;
-            this.setState({ rooms: this.state.rooms.concat( room ) })
+        this.messagesRef.on('child_added', snapshot => {
+            const message = snapshot.val();
+            message.key = snapshot.key;
+            this.setState({ messages: this.state.messages.concat( message ) })
+        });
+    }
+
+    createMessage(messages) {
+        this.messagesRef.push({
+            username: this.props.user ? this.props.user.displayName : 'Guest',
+            content: this.state.value,
+            // sentAt: firebase.database.ServerValue.TIMESTAMP
+            roomId: this.props.activeRoom.key
+
         });
     }
 
@@ -22,7 +36,7 @@ class MessageList extends Component {
   render() {
     return (
         <div>
-       
+          {/* some code here */}
         </div>
     );
   }
