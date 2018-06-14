@@ -42,13 +42,12 @@ class RoomList extends Component {
         this.setState({ newRoomName: e.target.value });
     }
 
-
   render() {
     return (
         <div>
            <ul className="room-list">
-            { this.state.rooms.map( (room)  =>
-            <li key={ room.key }> { room.name }</li>
+            { this.state.rooms.map( (room, index)  =>
+            <li onClick={() => this.props.setActiveRoom(room.key)} key={ index }> { room.name }</li>
         )}
         </ul>
         <form onSubmit={ (e) => this.handleSubmit(e) }>
