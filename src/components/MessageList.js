@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 
 
@@ -6,12 +7,10 @@ class MessageList extends Component {
         super(props);
         this.state = {
             messages: [],
-            username: '',
-            newMessage: '',
-            value: '',
-            activeRoom: ''
+            
         }
         this.messagesRef = this.props.firebase.database().ref('messages');
+   
     }
 
     componentDidMount() {
@@ -22,22 +21,12 @@ class MessageList extends Component {
         });
     }
 
-    createMessage(messages) {
-        this.messagesRef.push({
-            username: this.props.user ? this.props.user.displayName : 'Guest',
-            content: this.state.value,
-            // sentAt: firebase.database.ServerValue.TIMESTAMP
-            roomId: this.props.activeRoom.key
-
-        });
-    }
-
 
   render() {
     return (
-        <div>
-          {/* some code here */}
-        </div>
+      <div>
+
+      </div>
     );
   }
 }
