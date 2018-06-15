@@ -7,9 +7,14 @@ class MessageList extends Component {
         super(props);
         this.state = {
             messages: [],
-            
+            username: "",
+            content: "",
+            sentAt: "",
+            roomId: ""
         }
         this.messagesRef = this.props.firebase.database().ref('messages');
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
    
     }
 
@@ -19,6 +24,18 @@ class MessageList extends Component {
             message.key = snapshot.key;
             this.setState({ messages: this.state.messages.concat( message ) })
         });
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        if(this.state.newRoomName !== '') {
+            this.createRoom(this.state.newRoomName);
+            this.setState({newRoomName: ''});
+        }
+    }
+
+    handleChange(e) {
+        this.setState({ newRoomName: e.target.value });
     }
 
 
