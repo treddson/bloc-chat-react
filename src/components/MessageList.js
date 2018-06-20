@@ -34,7 +34,6 @@ class MessageList extends Component {
 
     componentDidMount() {
         this.messagesRef.on('child_added', snapshot => {
-            console.log(message)
             const message = snapshot.val();
             message.key = snapshot.key;
             this.setState({ messages: this.state.messages.concat( message ) })
@@ -56,9 +55,18 @@ class MessageList extends Component {
 
 
     render() {
+        // console.log(this.state.messages)
         return (
-            <div>
-            
+            <div className='message-list'> 
+                <ul>
+                    { this.state.messages.map( (message, index) => {
+                        if (this.props.activeRoom === message.roomId) {
+                            return <li key={ index }> {message.content} </li>
+                        }
+                    // console.log(this.props.activeRoom)
+                    // console.log(message.roomId)
+                    })}
+                </ul>
             </div>
         )
     }

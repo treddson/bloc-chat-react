@@ -49,7 +49,7 @@ class RoomList extends Component {
             { this.state.rooms.map( (room, index)  =>
             <li onClick={() => this.props.setActiveRoom(room.key)} key={ index }> { room.name }</li>
         )}
-        </ul>
+           </ul>
         <form onSubmit={ (e) => this.handleSubmit(e) }>
             <label>Create a Room:
             <textarea value={this.state.newRoomName} onChange={this.handleChange} />
