@@ -4,17 +4,31 @@ import React, { Component } from 'react';
 class User extends Component {
     constructor(props) {
         super(props);
-        this.state = [
-
-        ]
+        this.state = {
+            user: ''
+        };
+        this.userRef = this.props.firebase.database().ref('user');
+        this.signIn = this.signIn.bind(this);
+        this.signOut = this.signOut.bind(this);
     }
 
 
+    componentDidMount() {
+        this.props.firebase.auth().onAuthStateChanged( user => { this.props.setUser(user)
+            this.setState({user})
+        });
+    }
 
 
+    signIn() {
+        const provider = new this.props.firebase.auth.GoogleAuthProvider();
+        this.props.firebase.auth().signInWithPopup(provider);
+        console.log('signing in');
+    }
 
-
-
+    signOut() {
+        this.props.firebase.auth().signOut();
+    }
 
 
 
@@ -23,14 +37,12 @@ class User extends Component {
 render() {
     return (
         <div>
-
+            <button className='sign-in' onClick={this.signIn}>Sign in</button>
+            <button className='sign-out' onClick={this.signOut}>Sign out</button>
+            
         </div>
-    )
+    );
   }
-
-
 }
-
-
 
 export default User;
