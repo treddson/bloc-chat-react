@@ -51,10 +51,10 @@ class RoomList extends Component {
         )}
            </ul>
         <form onSubmit={ (e) => this.handleSubmit(e) }>
-            <label>Create a Room:
+            <label>
             <textarea value={this.state.newRoomName} onChange={this.handleChange} />
             </label>
-            <input type="submit" value="Submit" />
+            <input type="submit" value="New Room" />
         </form>
       </div>
     );

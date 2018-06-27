@@ -22,7 +22,8 @@ class MessageList extends Component {
    
     }
 
-    createMessage() {
+    createMessage(e) {
+        e.preventDefault();
         this.messagesRef.push({
             content: this.state.newMessage,
             roomId: this.props.activeRoom.key,
