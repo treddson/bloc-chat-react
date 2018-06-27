@@ -21,12 +21,13 @@ class App extends Component {
     constructor(props) {
       super(props)
       this.state = {
-        activeRoom: "",
-        activeMessage: "",
-        currentUser: ""
+        activeRoom: '',
+        activeMessage: '',
+        currentUser: ''
       }
       this.setActiveRoom = this.setActiveRoom.bind(this);
       this.setMessage = this.setMessage.bind(this);
+      this.setUser = this.setUser.bind(this);
     }
 
     setActiveRoom(room) {
@@ -39,6 +40,7 @@ class App extends Component {
     }
 
     setUser(user) {
+      // console.log(user.displayName)
       this.setState({currentUser: user});
     }
 
@@ -48,14 +50,13 @@ class App extends Component {
       <div className="App">
         <h1>Bloc Chat</h1>
         <nav className="nav-container">
-        <h1>Available Rooms</h1> 
-          <RoomList firebase= { firebase } createRoom={() => this.createRoom() } setActiveRoom={this.setActiveRoom } /> 
+        <h1>Available Rooms:</h1> 
+          <RoomList firebase= { firebase } createRoom={() => this.createRoom() } setActiveRoom={ this.setActiveRoom } /> 
         </nav> 
         <main>
-          <h2>Current User: {this.state.currentUser ? this.state.currentUser.displayName: 'Guest'}</h2>
-          <User firebase = { firebase } setUser={this.setUser.bind(this)} currentUser={this.state.currentUser } />
+          <User firebase = { firebase } setUser={this.setUser.bind(this)} currentUser={ this.state.currentUser }  />
         </main>
-          <MessageList firebase = { firebase } activeRoom={this.state.activeRoom} messages={this.state.messages } /> 
+          <MessageList firebase = { firebase } activeRoom={this.state.activeRoom} messages={ this.state.messages } /> 
       </div>
       </section>
     );

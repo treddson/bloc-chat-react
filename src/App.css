@@ -1,5 +1,5 @@
 body {
-  background: linear-gradient(to right, #ddd6f3, #faaca8);
+  background: linear-gradient(to right, #b3ffab, #12fff7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .App {
