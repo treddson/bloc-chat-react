@@ -68,6 +68,10 @@ class MessageList extends Component {
                     // console.log(message.roomId)
                     })}
                 </ul>
+                <form className="new-message" onSubmit={ (e) => this.handleSubmit(e) }>
+                    <input type="text" value={this.state.newMessage} onChange={ (e) => this.handleChange(e)} />
+                    <input type="submit" value="Send" />
+                </form>
             </div>
         )
     }
