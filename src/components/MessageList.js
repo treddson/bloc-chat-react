@@ -17,16 +17,18 @@ class MessageList extends Component {
         }
         this.messagesRef = this.props.firebase.database().ref('messages');
         this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
         this.createMessage = this.createMessage.bind(this);
    
     }
 
-    createMessage(message) {
+    createMessage(e) {
+        e.preventDefault();
         this.messagesRef.push({
             content: this.state.newMessage,
-            roomId: this.props.activeRoom.key,
-            username: !this.props.user ? 'Guest' : this.props.username.displayName,
+            roomId: 3, 
+            // this.state.activeRoom.key,
+            username: 'Guest',
+            // !this.props.username ? 'Guest' : this.props.username.displayName,
             sentAt: this.props.firebase.database.ServerValue.TIMESTAMP
         });
         this.setState({ newMessage: ''});
@@ -40,19 +42,9 @@ class MessageList extends Component {
         });
     }
 
-    handleSubmit(e) {
-        e.preventDefault();
-        if (this.state.newMessage !== '') {
-        this.createMessage;
-        this.setState({newMessage: ''});
-        }
-    }
-
     handleChange(e) {
         this.setState({ newMessage: e.target.value });
     }
-
-
 
     render() {
         // console.log(this.state.messages)
