@@ -25,10 +25,8 @@ class MessageList extends Component {
         e.preventDefault();
         this.messagesRef.push({
             content: this.state.newMessage,
-            roomId: 3, 
-            // this.state.activeRoom.key,
-            username: 'Guest',
-            // !this.props.username ? 'Guest' : this.props.username.displayName,
+            roomId: this.state.activeRoom || null,
+            username: !this.props.username ? 'Guest' : this.props.username.displayName || null,
             sentAt: this.props.firebase.database.ServerValue.TIMESTAMP
         });
         this.setState({ newMessage: ''});
