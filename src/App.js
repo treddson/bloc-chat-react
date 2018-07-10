@@ -52,7 +52,7 @@ class App extends Component {
           <RoomList firebase= { firebase } createRoom={() => this.createRoom() } setActiveRoom={ this.setActiveRoom } /> 
         </nav> 
           <User firebase = { firebase } setUser={this.setUser.bind(this)} currentUser={ this.state.currentUser }  />
-          <MessageList firebase = { firebase } activeRoom={this.state.activeRoom} messages={ this.state.messages } currentUser={this.state.currentUser}/> 
+          <MessageList firebase = { firebase } activeRoom={this.state.activeRoom} messages={ this.state.messages } username={this.state.currentUser}/> 
       </div>
     );
   }

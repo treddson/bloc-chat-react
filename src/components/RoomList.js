@@ -54,7 +54,7 @@ class RoomList extends Component {
             <label>
             <textarea value={this.state.newRoomName} onChange={this.handleChange} />
             </label>
-            <input className="btn btn-light" type="submit" value="New Room" />
+            <input className="btn btn-light btn-sm" type="submit" value="New Room" />
         </form>
       </div>
     );

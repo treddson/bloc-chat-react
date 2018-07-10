@@ -26,7 +26,7 @@ class MessageList extends Component {
         this.messagesRef.push({
             content: this.state.newMessage,
             roomId: this.props.activeRoom,
-            username: !this.props.username ? 'Guest' : this.props.username.currentUser,
+            username: !this.props.username ? 'Guest' : this.props.username.displayName,
             sentAt: this.props.firebase.database.ServerValue.TIMESTAMP
         });
         this.setState({ newMessage: ''});
@@ -59,7 +59,7 @@ class MessageList extends Component {
                 </ul>
                 <form className="new-message" onSubmit={ (e) => this.createMessage(e) }>
                     <input placeholder="your message" type="text" value={this.state.newMessage} onChange={ (e) => this.handleChange(e)} />
-                    <input className="btn btn-light" type="submit" value="Send" />
+                    <input className="btn btn-light btn-sm" type="submit" value="Send" />
                 </form>
             </div>
         )

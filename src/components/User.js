@@ -31,8 +31,8 @@ render() {
     return (
         <div>
             <h2>Current User: {this.props.currentUser ? this.props.currentUser.displayName : 'Guest'}</h2>
-            <button className="btn btn-light" onClick={this.signIn}>Sign in</button>
-            <button className="btn btn-light" onClick={this.signOut}>Sign out</button>  
+            <button className="btn btn-light btn-sm" onClick={this.signIn}>Sign in</button>
+            <button className="btn btn-light btn-sm" onClick={this.signOut}>Sign out</button>  
         </div>
     );
   }
