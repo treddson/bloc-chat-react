@@ -92,9 +92,10 @@ class MessageList extends Component {
 
     createMessage(e) {
         e.preventDefault();
+        console.log(this.props.activeRoom.key + ' ....is the active room');
         this.messagesRef.push({
             content: this.state.newMessage,
-            roomId: this.props.activeRoom,
+            roomId: this.props.activeRoom.key,
             username: !this.props.username ? 'Guest' : this.props.username.displayName,
             sentAt: this.props.firebase.database.ServerValue.TIMESTAMP
         });
@@ -119,7 +120,7 @@ class MessageList extends Component {
             <div className='message-list'> 
                 <ul>
                     { this.state.messages.map( (message, index) => {
-                        if (this.props.activeRoom === message.roomId) {
+                        if (this.props.activeRoom.key === message.roomId) {
                             return <li key={ index }> {message.username} says: {message.content} </li>
                         }
                     // console.log(this.props.activeRoom)
