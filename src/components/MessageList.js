@@ -92,7 +92,7 @@ class MessageList extends Component {
 
     createMessage(e) {
         e.preventDefault();
-        console.log(this.props.activeRoom.key + ' ....is the active room');
+        // console.log(this.props.activeRoom.key + ' ....is the active room');
         this.messagesRef.push({
             content: this.state.newMessage,
             roomId: this.props.activeRoom.key,
