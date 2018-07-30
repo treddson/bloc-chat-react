@@ -10,11 +10,12 @@ input, textarea {
   text-align: center;
 }
 
-.main {
+#main {
   text-align: center;
 }
 
 .btn {
   margin-left: 5px;
 }
+
 

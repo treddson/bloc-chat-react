@@ -45,7 +45,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="main">
+      <div id="main">
         <h1 className="bloc-header">Bloc Chat</h1>
         <nav className="nav-container">
         <h1>Available Rooms:</h1> 

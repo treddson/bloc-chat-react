@@ -52,7 +52,7 @@ class MessageList extends Component {
                 <ul>
                     { this.state.messages.map( (message, index) => {
                         if (this.props.activeRoom.key === message.roomId) {
-                            return <li key={ index }> {message.username} says: {message.content} </li>
+                            return <li key={ index }> {message.username} says: {message.content} (sent at {message.sentAt}) </li>
                         }
                     // console.log(this.props.activeRoom)
                     // console.log(message.roomId)
